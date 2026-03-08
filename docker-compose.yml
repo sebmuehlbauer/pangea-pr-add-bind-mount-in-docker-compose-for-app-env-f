@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: acm-meeting-records
+    restart: always
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./.env:/app/.env:ro
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+
+networks:
+  default:
+    name: acm-network
